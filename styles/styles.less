@@ -1,0 +1,25 @@
+@import "bootstrap/bootstrap.less";
+
+div.container { margin-top: 20px; }
+
+div.header {
+	padding: @baseline; margin-bottom: @baseline; .border-radius(6px); background-color: #f5f5f5;		
+	h1 {
+		margin-bottom: 12px; font-size: 60px; line-height: 1; letter-spacing: -2px;
+		small { display: block; line-height: 1; letter-spacing: 0; }
+	}
+	h2 { font-size: 30px; letter-spacing: -1px; line-height: @baseline * 2; }
+	ol {
+		margin-bottom: 0;
+		li { font-size: 20px; line-height: @baseline * 2; }
+	}
+}
+
+table#calendar {
+	width: auto;
+}
+
+footer { 
+	margin-top: (@baseline * 2) - 1;
+	p.source { text-align: right; }
+}
