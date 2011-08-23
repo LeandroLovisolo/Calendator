@@ -7,9 +7,10 @@ $(function() {
 	
 	// Populate the calendar
 	$("tbody").empty();
-	for(var i = 0; i < 4; i++) addWeek();
+	for(var i = 0; i < 12; i++) addWeek();
 	
 	// Bind events
+	$("#print").click(function() { print(); });
 	$("#more").click(addWeek);
 	$("#less").click(removeWeek);
 });
