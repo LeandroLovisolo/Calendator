@@ -21,6 +21,10 @@ table#calendar {
 	td.month { text-align: right; }
 	td.comments { width: 100%; }
 	input { width: 100%; }
+	td.date {
+		cursor: pointer;
+		&.marked { font-weight: bold; color: @red; }
+	}
 }
 
 div.buttons {
@@ -34,6 +38,5 @@ div.buttons {
 }
 
 footer { 
-	margin-top: (@baseline * 2) - 1;
-	p.source { text-align: right; }
+	text-align: right;
 }
