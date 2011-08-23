@@ -20,7 +20,9 @@ function addWeek() {
 	var newMonth = false;
 	
 	for(var i = 0; i < 7; i++) {
-		row.append("<td>" + currentDate.getDate() + "</td>");
+		var date = $("<td class='date'>" + currentDate.getDate() + "</td>");
+		date.click(toggleDate);
+		row.append(date);
 		if(currentDate.getDate() == 1) newMonth = true;
 		currentDate.add(1).days();
 	}
@@ -49,3 +51,8 @@ function updateLessLink() {
 		$("#less").removeClass("disabled");	
 	}
 }
+
+function toggleDate() {
+	$(this).toggleClass("marked");
+}
+
