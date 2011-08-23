@@ -19,15 +19,16 @@ function addWeek() {
 	row.append("<td class='month'></td>");
 	var newMonth = false;
 	
-	for(var i = 0; i < 7; i++) {
-		var date = $("<td class='date'>" + currentDate.getDate() + "</td>");
-		date.click(toggleDate);
-		row.append(date);
+	for(var i = 1; i <= 7; i++) {
+		var cell = $("<td class='date'>" + currentDate.getDate() + "</td>");
+		if(i == 1 || i == 7) cell.addClass("weekend");
+		cell.click(toggleDate);
+		row.append(cell);
 		if(currentDate.getDate() == 1) newMonth = true;
 		currentDate.add(1).days();
 	}
 	
-	row.append("<td class='comments'><input type='text'/></td>");
+	row.append("<td class='comments'><input type='text' maxlength='40'/></td>");
 	
 	if(newMonth || $("tbody").children().length == 0) {
 		row.find("td.month").text(currentDate.toString("MMM yyyy"));

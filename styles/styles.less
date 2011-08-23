@@ -17,13 +17,30 @@ div.header {
 }
 
 table#calendar {
-	td { width: auto; }
-	td.month { text-align: right; }
-	td.comments { width: 100%; }
-	input { width: 100%; }
-	td.date {
-		cursor: pointer;
-		&.marked { font-weight: bold; color: @red; }
+	@border: 1px solid #ddd;
+	border-bottom: @border;
+	tr, td { border-bottom: none; }
+	td { width: auto; padding: 0px; }
+	thead {
+		th.month { padding-left: 0px; }
+		th.date { text-align: center; }
+		th.comments { padding-left: 5px; }
+	}
+	tbody {
+		td.month { width: 70px; border-right: @border; }
+		td.date {
+			width: 30px; height: 30px; border-right: @border;
+			text-align: center; cursor: pointer;
+			&.weekend { background-color: #f5f5f5; }
+			&.marked { font-weight: bold; color: white; background-color: lighten(@red, 25); }
+		}
+		td.comments { 
+			padding-left: 5px;
+			input {
+				width: 100%; border: dotted #ddd; border-width: 0 0 1px 0;
+				font-family: "Monaco", Courier New, monospace; font-size: 11px;
+			}
+		}
 	}
 }
 
