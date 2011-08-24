@@ -1,0 +1,3 @@
+h1. Calendator
+
+Calendator lets you quickly generate printable calendars right from your browser. Great for sketching your schedule, drafting estimates during a meeting and as a regular calendar that you can stick on your wall.
