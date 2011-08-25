@@ -1,4 +1,5 @@
 var startDate, currentDate = null;
+var startMouseY = 0;
 
 $(function() {
 	startDate = Date.today();
@@ -10,10 +11,32 @@ $(function() {
 	for(var i = 0; i < 12; i++) addWeek();
 	
 	// Bind events
+	$("#grippie").mousedown(startDragging);
 	$("#print").click(function() { print(); });
-	$("#more").click(addWeek);
-	$("#less").click(removeWeek);
 });
+
+function startDragging(event) {
+	$(document).mousemove(dragging);
+	$(document).mouseup(stopDragging);
+	startMouseY = event.clientY;
+	if(event.target.setCapture) event.target.setCapture();
+	event.preventDefault();
+}
+
+function dragging(event) {
+	if(Math.abs(event.clientY - startMouseY) > $("tbody tr").height()) {
+		if((event.clientY - startMouseY) > 0) addWeek();
+		else removeWeek();
+		startMouseY = event.clientY;
+	}
+	event.preventDefault();
+}
+
+function stopDragging(event) {
+	$(document).unbind("mousemove");
+	$(document).unbind("mouseup");
+	if(event.target.releaseCapture) event.target.releaseCapture();
+}
 
 function addWeek() {
 	var row = $("<tr></tr>");
@@ -36,22 +59,12 @@ function addWeek() {
 	}
 	
 	$("tbody").append(row);
-	updateLessLink();
 }
 
 function removeWeek() {
 	if($("tbody tr").length == 1) return;
 	$("tbody tr:last").remove();
 	currentDate.add(-7).days();
-	updateLessLink();
-}
-
-function updateLessLink() {
-	if($("tbody tr").length == 1) {
-		$("#less").addClass("disabled");
-	} else {
-		$("#less").removeClass("disabled");	
-	}
 }
 
 function toggleDate() {
