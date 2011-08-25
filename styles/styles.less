@@ -27,18 +27,24 @@ table#calendar {
 		th.comments { padding-left: 5px; }
 	}
 	tbody {
+		tr:hover {
+			td.date { background-color: lighten(#f5f5f5, 2); }
+			td.date.weekend { background-color: darken(#f5f5f5, 5); }
+			input { background-color: lightyellow; }
+		}
 		td.month { width: 70px; border-right: @border; }
 		td.date {
 			width: 30px; height: 30px; border-right: @border;
 			text-align: center; cursor: pointer;
 			&.weekend { background-color: #f5f5f5; }
-			&.marked { font-weight: bold; color: white; background-color: lighten(@red, 25); }
+			&.marked { font-weight: bold; color: white; background-color: lighten(@red, 25) !important; }
 		}
 		td.comments { 
 			padding-left: 5px;
 			input {
 				width: 100%; border: dotted #ddd; border-width: 0 0 1px 0;
 				font-family: "Monaco", Courier New, monospace; font-size: 11px;
+				&:focus { background-color: lightyellow; }
 			}
 		}
 	}
