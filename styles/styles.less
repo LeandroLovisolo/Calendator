@@ -17,8 +17,8 @@ div.header {
 }
 
 table#calendar {
+	margin-bottom: 0;
 	@border: 1px solid #ddd;
-	border-bottom: @border;
 	tr, td { border-bottom: none; }
 	td { width: auto; padding: 0px; }
 	thead {
@@ -44,15 +44,19 @@ table#calendar {
 	}
 }
 
-div.buttons {
-	text-align: center;
-	a { cursor: pointer; }
-	.btn { margin-right: 20px; }
-	a#less.disabled {
-		cursor: text; color: lightgrey;
-		&:hover { color: lightgrey; text-decoration: none; }
-	}
+div#grippie {
+	padding: 2px;
+	margin-bottom: @baseline;
+	border-top: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-bottom: 1px solid darken(#ddd, 10);
+	border-right: 1px solid darken(#ddd, 10);
+	background-color: #f5f5f5;
+	cursor: s-resize;
+	hr { width: 50px; margin: 1px auto 0 auto; border-color: darken(#ddd, 20); }
 }
+
+p.grippieLegend { text-align: center; }
 
 footer {
 	margin-top: (@baseline * 2) - 1;
